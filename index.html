@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a10">
+<title>Seerah — Eternal Time</title>
+<style>
+:root{color-scheme:dark;--bg:#08090f;--panel:#11131d;--line:#353044;--gold:#e6c77a;--cream:#fff3d2;--muted:#a8a4b5;--purple:#8c6bd1}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#38294f 0%,#151321 32%,var(--bg) 70%);color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+header{text-align:center;padding:34px 16px 20px}
+.moon{font-size:28px;color:var(--gold);letter-spacing:8px}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:12px 0}
+h1{font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,3.3rem);font-weight:500;letter-spacing:.04em;margin:8px 0}
+.subtitle{color:var(--muted);max-width:650px;margin:0 auto;line-height:1.6;font-size:.95rem}
+.datebox{margin:18px auto 0;max-width:760px;padding:13px 16px;border:1px solid #54452d;border-radius:14px;background:#14121a;line-height:1.7;font-size:.9rem}
+.datebox strong{color:var(--gold)}
+.status{font-size:.78rem;color:var(--muted);margin-top:10px}
+.grid{width:min(1180px,100%);margin:0 auto;padding:12px 14px 36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{min-width:0;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:19px;background:linear-gradient(145deg,rgba(30,27,43,.97),rgba(13,15,23,.98));box-shadow:0 12px 34px #0003}
+.card:before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.8}
+.cardhead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:16px}
+.card h2{font:500 1.12rem Georgia,serif;margin:0 0 5px;color:var(--cream)}
+.card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.4}
+.badge{flex-shrink:0;color:var(--gold);font-size:.66rem;letter-spacing:.1em;border:1px solid #594a32;border-radius:999px;padding:5px 8px}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:8px}
+.unit{min-width:0;border:1px solid #292637;border-radius:11px;background:#090b12;padding:12px 5px 10px;text-align:center}
+.num{display:block;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;word-break:normal;line-height:1.12;font-size:clamp(1.05rem,2.8vw,1.85rem);font-weight:650;color:var(--gold);letter-spacing:-.035em}
+.label{display:block;margin-top:7px;color:#b5afc4;text-transform:uppercase;letter-spacing:.09em;font-size:.61rem}
+.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:15px;color:#898498;font-size:.7rem}
+.indicator{display:inline-block;width:6px;height:6px;background:#80c7a1;border-radius:50%;margin-right:6px;box-shadow:0 0 8px #80c7a177}
+footer{text-align:center;padding:0 18px 32px;color:#8f8a9e;font-size:.78rem;line-height:1.7}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:10px 12px 28px}.card{padding:16px}.counter{grid-template-columns:repeat(auto-fit,minmax(58px,1fr))}.num{font-size:clamp(1rem,5vw,1.65rem)}header{padding-top:26px}}
+@media(prefers-reduced-motion:no-preference){.card{animation:rise .55s both}.card:nth-child(2){animation-delay:.04s}.card:nth-child(3){animation-delay:.08s}.card:nth-child(4){animation-delay:.12s}.card:nth-child(5){animation-delay:.16s}.card:nth-child(6){animation-delay:.2s}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header>
+  <div class="moon" aria-hidden="true">☾ ✦ ☽</div>
+  <div class="eyebrow">A respectful Seerah timepiece</div>
+  <h1>Eternal Time</h1>
+  <p class="subtitle">Six separate, continuously advancing counters, dedicated to remembering Prophet Muhammad ﷺ.</p>
+  <div class="datebox">
+    <strong>Historical reference (approximate)</strong><br>
+    571 CE · April (approximate) · 20th (disputed) · 06:00 AM (speculative)
+  </div>
+  <div class="status" id="status" role="status">Connecting to an internet time source…</div>
+</header>
+
+<main class="grid" aria-label="Independent elapsed-time counters">
+  <section class="card" data-kind="ymdhms">
+    <div class="cardhead"><div><h2>01 · Complete Count</h2><p>Years through seconds</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 01</span></div>
+  </section>
+  <section class="card" data-kind="dhms">
+    <div class="cardhead"><div><h2>02 · Days Count</h2><p>Days through seconds</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 02</span></div>
+  </section>
+  <section class="card" data-kind="hms">
+    <div class="cardhead"><div><h2>03 · Hours Count</h2><p>Hours through seconds</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 03</span></div>
+  </section>
+  <section class="card" data-kind="msns">
+    <div class="cardhead"><div><h2>04 · Precision Count</h2><p>Minutes, seconds and nanoseconds</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 04</span></div>
+  </section>
+  <section class="card" data-kind="sns">
+    <div class="cardhead"><div><h2>05 · Seconds + Precision</h2><p>Seconds and nanoseconds</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 05</span></div>
+  </section>
+  <section class="card" data-kind="s">
+    <div class="cardhead"><div><h2>06 · Seconds Count</h2><p>Seconds only</p></div><span class="badge">INDEPENDENT</span></div>
+    <div class="counter" aria-live="off"></div><div class="cardfoot"><span><i class="indicator"></i>Continuous count</span><span>Counter 06</span></div>
+  </section>
+</main>
+<footer>
+  Historical date and birth time are not established with exact certainty; the displayed reference is a chosen estimate, not a universally agreed timestamp.<br>
+  Time is obtained from an internet time source, not the device clock. If the source is unavailable, counters pause rather than silently use device time.<br>
+  Nanoseconds are a mathematical display derived from browser timing precision, not a claim of nanosecond-accurate hardware measurement.
+</footer>
+<script>
+(() => {
+  "use strict";
+  // Gregorian UTC reference: 571-04-20 06:00:00. This is deliberately an estimate.
+  const referenceMs = Date.UTC(571, 3, 20, 6, 0, 0);
+  const DAY = 86400000;
+  const cards = [...document.querySelectorAll(".card")];
+  const status = document.getElementById("status");
+  let trustedNowAtSync = null;
+  let monoAtSync = null;
+  let synced = false;
+
+  const specs = {
+    ymdhms: [["Years","years"],["Months","months"],["Days","days"],["Hours","hours"],["Minutes","minutes"],["Seconds","seconds"]],
+    dhms: [["Days","days"],["Hours","hours"],["Minutes","minutes"],["Seconds","seconds"]],
+    hms: [["Hours","hours"],["Minutes","minutes"],["Seconds","seconds"]],
+    msns: [["Minutes","minutes"],["Seconds","seconds"],["Nanoseconds","nanoseconds"]],
+    sns: [["Seconds","seconds"],["Nanoseconds","nanoseconds"]],
+    s: [["Seconds","seconds"]]
+  };
+  cards.forEach(card => {
+    const counter = card.querySelector(".counter");
+    specs[card.dataset.kind].forEach(([label,key]) => {
+      const unit = document.createElement("div"); unit.className = "unit";
+      const num = document.createElement("span"); num.className = "num"; num.dataset.key = key; num.textContent = "—";
+      const lab = document.createElement("span"); lab.className = "label"; lab.textContent = label;
+      unit.append(num,lab); counter.append(unit);
+    });
+  });
+
+  async function syncTime() {
+    const endpoints = [
+      "https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC",
+      "https://worldtimeapi.org/api/timezone/Etc/UTC"
+    ];
+    for (const url of endpoints) {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 4500);
+        const response = await fetch(url, {cache:"no-store", signal:controller.signal});
+        clearTimeout(timeout);
+        if (!response.ok) continue;
+        const data = await response.json();
+        const iso = data.dateTime || data.utc_datetime;
+        const parsed = Date.parse(iso);
+        if (!Number.isFinite(parsed)) continue;
+        trustedNowAtSync = parsed;
+        monoAtSync = performance.now();
+        synced = true;
+        status.textContent = "Synchronized to internet UTC · counters are running";
+        status.style.color = "#a8d8ba";
+        render();
+        return;
+      } catch (_) {}
+    }
+    synced = false;
+    status.textContent = "Internet time unavailable · waiting to synchronize (device clock is not used)";
+    status.style.color = "#e6c77a";
+    cards.forEach(card => card.querySelectorAll(".num").forEach(n => n.textContent = "—"));
+  }
+
+  function elapsedMs() {
+    if (!synced) return null;
+    // Monotonic elapsed time means clock/date changes on the device do not affect the running count.
+    return Math.max(0, trustedNowAtSync + (performance.now() - monoAtSync) - referenceMs);
+  }
+  function pad(n, width=2) { return String(n).padStart(width,"0"); }
+  function splitElapsed(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const years = Math.floor(totalSeconds / (365.2425 * 86400));
+    // Approximate year/month breakdown for an elapsed-duration display.
+    let remDays = Math.floor(totalSeconds / 86400) - Math.floor(years * 365.2425);
+    if (remDays < 0) remDays = 0;
+    const months = Math.floor(remDays / 30.436875);
+    const days = Math.floor(remDays - months * 30.436875);
+    return {
+      years: String(years),
+      months: pad(months),
+      days: pad(days),
+      hours: pad(Math.floor(totalSeconds / 3600) % 24),
+      minutes: pad(Math.floor(totalSeconds / 60) % 60),
+      seconds: pad(totalSeconds % 60),
+      totalDays: String(Math.floor(totalSeconds / 86400)),
+      totalHours: String(Math.floor(totalSeconds / 3600)),
+      totalMinutes: String(Math.floor(totalSeconds / 60)),
+      totalSeconds: String(totalSeconds),
+      nanoseconds: pad(Math.floor((ms % 1000) * 1e6), 9)
+    };
+  }
+  function render() {
+    const ms = elapsedMs();
+    if (ms === null) return;
+    const t = splitElapsed(ms);
+    cards.forEach(card => {
+      const kind = card.dataset.kind;
+      const vals = kind === "dhms" ? {...t, days:t.totalDays}
+        : kind === "hms" ? {...t, hours:t.totalHours}
+        : kind === "msns" ? {...t, minutes:t.totalMinutes}
+        : kind === "sns" ? {...t, seconds:t.totalSeconds}
+        : kind === "s" ? {...t, seconds:t.totalSeconds} : t;
+      card.querySelectorAll(".num").forEach(el => {
+        const key = el.dataset.key;
+        el.textContent = vals[key] ?? "—";
+      });
+    });
+  }
+  // Independent displays, shared trusted reference and monotonic clock source.
+  setInterval(render, 25);
+  syncTime();
+  setInterval(syncTime, 10 * 60 * 1000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) syncTime(); });
+})();
+</script>
+</body>
+</html>
